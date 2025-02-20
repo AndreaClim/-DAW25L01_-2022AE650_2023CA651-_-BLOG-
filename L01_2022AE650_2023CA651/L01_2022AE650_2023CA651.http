@@ -1,0 +1,6 @@
+@L01_2022AE650_2023CA651_HostAddress = http://localhost:5115
+
+GET {{L01_2022AE650_2023CA651_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
