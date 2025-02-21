@@ -1,6 +1,17 @@
-﻿namespace L01_2022AE650_2023CA651.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace L01_2022AE650_2023CA651.Models
 {
-    public class Class
+    public class usuarios
     {
+        [Key]
+        public int usuarioId { get; set; }
+        public int rolId { get; set; }
+        public string nombreUsuario { get; set; }
+        public string clave { get; set; }
+        public string nombre { get; set; }
+        public string apellido { get; set; }
+
+
     }
 }
