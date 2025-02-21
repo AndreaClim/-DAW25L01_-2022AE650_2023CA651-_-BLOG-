@@ -8,6 +8,7 @@ namespace L01_2022AE650_2023CA651.Controllers
     [ApiController]
     public class publicacionesController : ControllerBase
     {
+
         private readonly publicacionesContext _publicacionesContext;
         public publicacionesController(publicacionesContext publicacionesContext)
         {
@@ -28,5 +29,30 @@ namespace L01_2022AE650_2023CA651.Controllers
 
             return Ok(listadoPublicaciones);
         }
+        [HttpGet]
+        [Route("TopPublicaciones")]
+        public IActionResult GetTopPublicaciones(int TopPublicaciones)
+        {
+            var topPublicaciones = _publicacionesContext.publicaciones
+                .Select(publicaciones => new
+                {
+                    publicaciones.publicacionId,
+                    publicaciones.titulo,
+                    ComentariosCount = _publicacionesContext.comentarios.Count(comentarios => comentarios.publicacionId == comentarios.publicacionId)
+                })
+                .OrderByDescending(publicaciones => publicaciones.ComentariosCount)
+                .Take(TopPublicaciones)
+                .ToList();
+
+            if (topPublicaciones.Count == 0)
+            {
+                return NotFound("No hay publicaciones con comentarios.");
+            }
+
+            return Ok(topPublicaciones);
+        }
+
+
+
     }
 }
