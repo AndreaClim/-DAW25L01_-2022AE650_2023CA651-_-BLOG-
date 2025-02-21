@@ -13,6 +13,9 @@ builder.Services.AddDbContext<usuariosContext>(options =>
 builder.Services.AddDbContext<comentariosContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("blogDbConnection")));
 
+builder.Services.AddDbContext<publicacionesContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("blogDbConnection")));
+
 
 
 builder.Services.AddEndpointsApiExplorer();
