@@ -8,6 +8,6 @@ namespace L01_2022AE650_2023CA651.Models
         public comentariosContext(DbContextOptions<comentariosContext> options) : base(options)
         {
         }
-
+        public DbSet<comentarios> comentarios { get; set; }
     }
 }

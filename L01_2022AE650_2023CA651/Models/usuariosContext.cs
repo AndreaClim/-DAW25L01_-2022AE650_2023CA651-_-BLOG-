@@ -8,6 +8,6 @@ namespace L01_2022AE650_2023CA651.Models
         public usuariosContext(DbContextOptions<usuariosContext> options) : base(options)
         {
         }
-        
+        public DbSet<usuarios> usuarios { get; set; }
     }
 }
